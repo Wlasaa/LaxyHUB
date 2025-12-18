@@ -75,7 +75,7 @@ keyStroke.Thickness=3
 local keyTitle=Instance.new("TextLabel",keyFrame)
 keyTitle.Size=UDim2.new(1,0,0,50)
 keyTitle.BackgroundColor3=Color3.fromRGB(50,50,50)
-keyTitle.Text="LaxyHUB Key System"
+keyTitle.Text=t.keyTitle
 keyTitle.TextColor3=Color3.new(1,1,1)
 keyTitle.TextSize=22
 keyTitle.Font=Enum.Font.GothamBold
@@ -103,7 +103,7 @@ keyInput.Size=UDim2.new(1,-40,0,45)
 keyInput.Position=UDim2.new(0,20,0,80)
 keyInput.BackgroundColor3=Color3.fromRGB(40,40,40)
 keyInput.Text=""
-keyInput.PlaceholderText="Enter Key Here..."
+keyInput.PlaceholderText=t.enterKey
 keyInput.TextColor3=Color3.new(1,1,1)
 keyInput.PlaceholderColor3=Color3.fromRGB(150,150,150)
 keyInput.TextSize=16
@@ -117,7 +117,7 @@ local verifyBtn=Instance.new("TextButton",keyFrame)
 verifyBtn.Size=UDim2.new(0,170,0,45)
 verifyBtn.Position=UDim2.new(0,20,0,145)
 verifyBtn.BackgroundColor3=Color3.fromRGB(50,200,50)
-verifyBtn.Text="Verify Key"
+verifyBtn.Text=t.verifyKey
 verifyBtn.TextColor3=Color3.new(1,1,1)
 verifyBtn.TextSize=18
 verifyBtn.Font=Enum.Font.GothamBold
@@ -130,7 +130,7 @@ local getKeyBtn=Instance.new("TextButton",keyFrame)
 getKeyBtn.Size=UDim2.new(0,170,0,45)
 getKeyBtn.Position=UDim2.new(1,-190,0,145)
 getKeyBtn.BackgroundColor3=Color3.fromRGB(70,70,200)
-getKeyBtn.Text="Get Key"
+getKeyBtn.Text=t.getKey
 getKeyBtn.TextColor3=Color3.new(1,1,1)
 getKeyBtn.TextSize=18
 getKeyBtn.Font=Enum.Font.GothamBold
@@ -155,18 +155,18 @@ getKeyBtn.MouseLeave:Connect(function() getKeyBtn.BackgroundColor3=Color3.fromRG
 
 getKeyBtn.MouseButton1Click:Connect(function()
     setclipboard("https://discord.gg/We6zWm7t")
-    getKeyBtn.Text="Link Copied!"
+    getKeyBtn.Text=t.linkCopied
     wait(2)
-    getKeyBtn.Text="Get Key"
+    getKeyBtn.Text=t.getKey
 end)
 
 verifyBtn.MouseButton1Click:Connect(function()
     local key=keyInput.Text
     if key=="" then
-        statusText.Text="Please Enter Key"
+        statusText.Text=t.pleaseEnter
         statusText.TextColor3=Color3.fromRGB(255,100,100)
     elseif key=="LaxyHub2025" then
-        statusText.Text="Key Verified! Loading..."
+        statusText.Text=t.keyVerified
         statusText.TextColor3=Color3.fromRGB(100,255,100)
         wait(1)
         keyFrame:Destroy()
@@ -180,7 +180,7 @@ verifyBtn.MouseButton1Click:Connect(function()
         loadingText.Size=UDim2.new(0,400,0,100)
         loadingText.Position=UDim2.new(0.5,-200,0.5,-50)
         loadingText.BackgroundTransparency=1
-        loadingText.Text="LaxyHUB Loading..."
+        loadingText.Text=t.loading
         loadingText.TextColor3=Color3.fromRGB(100,150,255)
         loadingText.TextSize=36
         loadingText.Font=Enum.Font.GothamBold
@@ -206,7 +206,7 @@ verifyBtn.MouseButton1Click:Connect(function()
             for i=1,25 do
                 wait(0.2)
                 local dots=string.rep(".",i%4)
-                if loadingText then loadingText.Text="LaxyHUB Loading"..dots end
+                if loadingText then loadingText.Text=t.loading:gsub("%.%.%.$","")..dots end
             end
         end)
 
@@ -334,7 +334,7 @@ verifyBtn.MouseButton1Click:Connect(function()
         minimizeBtn.Size=UDim2.new(1,0,0,30)
         minimizeBtn.Position=UDim2.new(0,0,0,70)
         minimizeBtn.BackgroundColor3=Color3.fromRGB(45,45,45)
-        minimizeBtn.Text="▼ Tap to minimize"
+        minimizeBtn.Text=t.tapMin
         minimizeBtn.TextColor3=Color3.fromRGB(150,150,150)
         minimizeBtn.TextSize=14
         minimizeBtn.Font=Enum.Font.GothamBold
@@ -387,7 +387,7 @@ verifyBtn.MouseButton1Click:Connect(function()
         confText.Size=UDim2.new(1,-20,0,60)
         confText.Position=UDim2.new(0,10,0,20)
         confText.BackgroundTransparency=1
-        confText.Text="Do you want to close\nLaxyHUB?"
+        confText.Text=t.closeQ
         confText.TextColor3=Color3.new(1,1,1)
         confText.TextSize=18
         confText.Font=Enum.Font.GothamBold
@@ -398,7 +398,7 @@ verifyBtn.MouseButton1Click:Connect(function()
         yesBtn.Size=UDim2.new(0,120,0,45)
         yesBtn.Position=UDim2.new(0,20,1,-65)
         yesBtn.BackgroundColor3=Color3.fromRGB(50,200,50)
-        yesBtn.Text="Yes"
+        yesBtn.Text=t.yes
         yesBtn.TextColor3=Color3.new(1,1,1)
         yesBtn.TextSize=18
         yesBtn.Font=Enum.Font.GothamBold
@@ -411,7 +411,7 @@ verifyBtn.MouseButton1Click:Connect(function()
         noBtn.Size=UDim2.new(0,120,0,45)
         noBtn.Position=UDim2.new(1,-140,1,-65)
         noBtn.BackgroundColor3=Color3.fromRGB(200,50,50)
-        noBtn.Text="No"
+        noBtn.Text=t.no
         noBtn.TextColor3=Color3.new(1,1,1)
         noBtn.TextSize=18
         noBtn.Font=Enum.Font.GothamBold
@@ -542,8 +542,8 @@ verifyBtn.MouseButton1Click:Connect(function()
             return btn
         end
 
-        local universalBtn=categoryBtn("Universal",10)
-        local mainBtn=categoryBtn("Main",65)
+        local universalBtn=categoryBtn(t.universal,10)
+        local mainBtn=categoryBtn(t.main,65)
 
         local flyBtn=scriptBtn("Fly",10,"https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt")
         local noclipBtn=scriptBtn("No Clip",70)
@@ -575,9 +575,10 @@ verifyBtn.MouseButton1Click:Connect(function()
         local forgeBtn=scriptBtn("The Forge",250)
         local bladeballBtn=scriptBtn("Blade Ball",310)
         local mm2Btn=scriptBtn("Murder Mystery 2",370)
+        local gungroundsBtn=scriptBtn("Gun Grounds FFA",430,"https://raw.githubusercontent.com/Hwrhero13gmailcom/Gun-Grounds-FFA/refs/heads/main/Zenith%20HUB")
         
-        local mm2YarhmBtn=scriptBtn("Yarhm\n(Mobile)",10,"https://raw.githubusercontent.com/A1ex-0n/MM2/main/yarhm.lua")
-        local mm2VertexBtn=scriptBtn("Vertex\n(PC)",70,"https://raw.githubusercontent.com/vertex-peak/vertex/refs/heads/main/loadstring")
+        local mm2YarhmBtn=scriptBtn("Yarhm\n"..t.mobile,10,"https://raw.githubusercontent.com/A1ex-0n/MM2/main/yarhm.lua")
+        local mm2VertexBtn=scriptBtn("Vertex\n"..t.pc,70,"https://raw.githubusercontent.com/vertex-peak/vertex/refs/heads/main/loadstring")
 
         arsenalBtn.MouseButton1Click:Connect(function() loadstring(game:HttpGet("https://soluna-script.vercel.app/arsenal.lua",true))() end)
         rivalsBtn.MouseButton1Click:Connect(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/endoverdosing/Soluna-API/refs/heads/main/rivals-classic.lua",true))() end)
@@ -618,7 +619,8 @@ verifyBtn.MouseButton1Click:Connect(function()
             forgeBtn.Visible=true
             bladeballBtn.Visible=true
             mm2Btn.Visible=true
-            rightPanel.CanvasSize=UDim2.new(0,0,0,430)
+            gungroundsBtn.Visible=true
+            rightPanel.CanvasSize=UDim2.new(0,0,0,490)
         end)
 
         mm2Btn.MouseButton1Click:Connect(function()
@@ -628,7 +630,7 @@ verifyBtn.MouseButton1Click:Connect(function()
             warningText.Size=UDim2.new(1,-20,0,60)
             warningText.Position=UDim2.new(0,10,0,10)
             warningText.BackgroundColor3=Color3.fromRGB(50,50,50)
-            warningText.Text="⚠️ If black screen after round, rejoin"
+            warningText.Text=t.mm2Warning
             warningText.TextColor3=Color3.fromRGB(255,200,0)
             warningText.TextSize=14
             warningText.Font=Enum.Font.GothamBold
@@ -641,7 +643,7 @@ verifyBtn.MouseButton1Click:Connect(function()
             infoText.Size=UDim2.new(1,-20,0,40)
             infoText.Position=UDim2.new(0,10,0,80)
             infoText.BackgroundColor3=Color3.fromRGB(45,45,45)
-            infoText.Text="📱 Yarhm = For Mobile | 💻 Vertex = For PC"
+            infoText.Text=t.mm2Info
             infoText.TextColor3=Color3.fromRGB(150,200,255)
             infoText.TextSize=13
             infoText.Font=Enum.Font.Gotham
@@ -705,7 +707,7 @@ verifyBtn.MouseButton1Click:Connect(function()
         
         toggleMenu()
     else
-        statusText.Text="Please Enter Correct Key"
+        statusText.Text=t.correctKey
         statusText.TextColor3=Color3.fromRGB(255,100,100)
     end
 end)
