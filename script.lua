@@ -4,6 +4,61 @@ sg.ResetOnSpawn=false
 sg.IgnoreGuiInset=true
 sg.ZIndexBehavior=Enum.ZIndexBehavior.Sibling
 
+local function getLanguage()
+    local locale=game:GetService("LocalizationService").RobloxLocaleId
+    if locale:sub(1,2)=="tr" then return "tr" end
+    return "en"
+end
+
+local lang=getLanguage()
+
+local translations={
+    en={
+        keyTitle="LaxyHUB Key System",
+        enterKey="Enter Key Here...",
+        verifyKey="Verify Key",
+        getKey="Get Key",
+        pleaseEnter="Please Enter Key",
+        correctKey="Please Enter Correct Key",
+        keyVerified="Key Verified! Loading...",
+        linkCopied="Link Copied!",
+        loading="LaxyHUB Loading...",
+        tapMin="▼ Tap to minimize",
+        closeQ="Do you want to close\nLaxyHUB?",
+        yes="Yes",
+        no="No",
+        universal="Universal",
+        main="Main",
+        mm2Warning="⚠️ If black screen after round, rejoin",
+        mm2Info="📱 Yarhm = For Mobile | 💻 Vertex = For PC",
+        mobile="(Mobile)",
+        pc="(PC)"
+    },
+    tr={
+        keyTitle="LaxyHUB Anahtar Sistemi",
+        enterKey="Anahtarı Buraya Girin...",
+        verifyKey="Anahtarı Doğrula",
+        getKey="Anahtar Al",
+        pleaseEnter="Lütfen Anahtar Girin",
+        correctKey="Lütfen Doğru Anahtarı Girin",
+        keyVerified="Anahtar Doğrulandı! Yükleniyor...",
+        linkCopied="Link Kopyalandı!",
+        loading="LaxyHUB Yükleniyor...",
+        tapMin="▼ Küçültmek için dokun",
+        closeQ="LaxyHUB'ı kapatmak\nistiyor musunuz?",
+        yes="Evet",
+        no="Hayır",
+        universal="Evrensel",
+        main="Ana",
+        mm2Warning="⚠️ Round sonrası siyah ekran olursa çık gir yapın",
+        mm2Info="📱 Yarhm = Telefon için | 💻 Vertex = Bilgisayar için",
+        mobile="(Telefon)",
+        pc="(Bilgisayar)"
+    }
+}
+
+local t=translations[lang]
+
 local keyFrame=Instance.new("Frame",sg)
 keyFrame.Size=UDim2.new(0,400,0,250)
 keyFrame.Position=UDim2.new(0.5,-200,0.5,-125)
@@ -501,7 +556,7 @@ verifyBtn.MouseButton1Click:Connect(function()
                 local function Nocl()
                     if Clip==false and game.Players.LocalPlayer.Character then
                         for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                            if v:IsA('BasePart') and v.CanCollide and v.Name~=floatName then
+                            if v:IsA('BasePart') and v.CanCollide then
                                 v.CanCollide=false
                             end
                         end
@@ -520,6 +575,10 @@ verifyBtn.MouseButton1Click:Connect(function()
         local forgeBtn=scriptBtn("The Forge",250)
         local bladeballBtn=scriptBtn("Blade Ball",310)
         local mm2Btn=scriptBtn("Murder Mystery 2",370)
+        local gungroundsBtn=scriptBtn("Gun Grounds FFA",430,"https://raw.githubusercontent.com/Hwrhero13gmailcom/Gun-Grounds-FFA/refs/heads/main/Zenith%20HUB")
+        local aotBtn=scriptBtn("Attack On Titan",490,"https://api.luarmor.net/files/v3/loaders/705e7fe7aa288f0fe86900cedb1119b1.lua")
+        local defuseBtn=scriptBtn("Defuse Division",550,"https://expectional.dev/loadstring/Defuse-Division.lua")
+        local fnafBtn=scriptBtn("FNAF: Co-op",610,"https://raw.githubusercontent.com/Vqnxlr/fnas/refs/heads/main/script2.lua")
         
         local mm2YarhmBtn=scriptBtn("Yarhm\n(Mobile)",10,"https://raw.githubusercontent.com/A1ex-0n/MM2/main/yarhm.lua")
         local mm2VertexBtn=scriptBtn("Vertex\n(PC)",70,"https://raw.githubusercontent.com/vertex-peak/vertex/refs/heads/main/loadstring")
@@ -563,7 +622,11 @@ verifyBtn.MouseButton1Click:Connect(function()
             forgeBtn.Visible=true
             bladeballBtn.Visible=true
             mm2Btn.Visible=true
-            rightPanel.CanvasSize=UDim2.new(0,0,0,430)
+            gungroundsBtn.Visible=true
+            aotBtn.Visible=true
+            defuseBtn.Visible=true
+            fnafBtn.Visible=true
+            rightPanel.CanvasSize=UDim2.new(0,0,0,670)
         end)
 
         mm2Btn.MouseButton1Click:Connect(function()
