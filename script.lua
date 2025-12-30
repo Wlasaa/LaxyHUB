@@ -579,6 +579,7 @@ verifyBtn.MouseButton1Click:Connect(function()
         local aotBtn=scriptBtn("Attack On Titan",490,"https://api.luarmor.net/files/v3/loaders/705e7fe7aa288f0fe86900cedb1119b1.lua")
         local defuseBtn=scriptBtn("Defuse Division",550,"https://expectional.dev/loadstring/Defuse-Division.lua")
         local fnafBtn=scriptBtn("FNAF: Co-op",610,"https://raw.githubusercontent.com/Vqnxlr/fnas/refs/heads/main/script2.lua")
+        local blindBtn=scriptBtn("Blind Shot",670)
         
         local mm2YarhmBtn=scriptBtn("Yarhm\n(Mobile)",10,"https://raw.githubusercontent.com/A1ex-0n/MM2/main/yarhm.lua")
         local mm2VertexBtn=scriptBtn("Vertex\n(PC)",70,"https://raw.githubusercontent.com/vertex-peak/vertex/refs/heads/main/loadstring")
@@ -587,6 +588,7 @@ verifyBtn.MouseButton1Click:Connect(function()
         rivalsBtn.MouseButton1Click:Connect(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/endoverdosing/Soluna-API/refs/heads/main/rivals-classic.lua",true))() end)
         forgeBtn.MouseButton1Click:Connect(function() repeat wait() until game:IsLoaded() loadstring(game:HttpGet("https://raw.githubusercontent.com/LioK251/RbScripts/refs/heads/main/lazyuhub_theforge.lua"))() end)
         bladeballBtn.MouseButton1Click:Connect(function() loadstring(game:HttpGet("https://raw.githubusercontent.com/AgentX771/ArgonHubX/main/Loader.lua"))() end)
+        blindBtn.MouseButton1Click:Connect(function() loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\34\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\67\79\79\76\88\80\76\79\47\68\80\45\72\85\66\45\99\111\111\108\120\112\108\111\47\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47\98\108\105\110\100\46\108\117\97\34\41\41\40\41")() end)
         
         mm2Btn.MouseButton1Click:Connect(function()
             hideAll()
@@ -626,7 +628,8 @@ verifyBtn.MouseButton1Click:Connect(function()
             aotBtn.Visible=true
             defuseBtn.Visible=true
             fnafBtn.Visible=true
-            rightPanel.CanvasSize=UDim2.new(0,0,0,670)
+            blindBtn.Visible=true
+            rightPanel.CanvasSize=UDim2.new(0,0,0,730)
         end)
 
         mm2Btn.MouseButton1Click:Connect(function()
