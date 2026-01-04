@@ -115,6 +115,35 @@ keyTitle.TextColor3=Color3.new(1,1,1)
 keyTitle.TextSize=22
 keyTitle.Font=Enum.Font.GothamBold
 keyTitle.BorderSizePixel=0
+keyTitle.Active=true
+
+local keyDragging,keyDragInput,keyDragStart,keyStartPos
+
+keyTitle.InputBegan:Connect(function(input)
+    if input.UserInputType==Enum.UserInputType.MouseButton1 or input.UserInputType==Enum.UserInputType.Touch then
+        keyDragging=true
+        keyDragStart=input.Position
+        keyStartPos=keyFrame.Position
+        input.Changed:Connect(function()
+            if input.UserInputState==Enum.UserInputState.End then
+                keyDragging=false
+            end
+        end)
+    end
+end)
+
+keyTitle.InputChanged:Connect(function(input)
+    if input.UserInputType==Enum.UserInputType.MouseMovement or input.UserInputType==Enum.UserInputType.Touch then
+        keyDragInput=input
+    end
+end)
+
+game:GetService("UserInputService").InputChanged:Connect(function(input)
+    if input==keyDragInput and keyDragging then
+        local delta=input.Position-keyDragStart
+        keyFrame.Position=UDim2.new(keyStartPos.X.Scale,keyStartPos.X.Offset+delta.X,keyStartPos.Y.Scale,keyStartPos.Y.Offset+delta.Y)
+    end
+end)
 
 local keyGradient=Instance.new("UIGradient",keyTitle)
 keyGradient.Color=ColorSequence.new{
