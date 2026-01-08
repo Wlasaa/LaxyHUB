@@ -30,12 +30,7 @@ local function unlockMouse()
     end)
 end
 
-local function lockMouse()
-    pcall(function()
-        UserInputService.MouseBehavior=Enum.MouseBehavior.LockCenter
-        UserInputService.MouseIconEnabled=false
-    end)
-end
+unlockMouse()
 
 local function getLanguage()
     local locale=game:GetService("LocalizationService").RobloxLocaleId
@@ -97,8 +92,6 @@ keyFrame.Size=UDim2.new(0,400,0,250)
 keyFrame.Position=UDim2.new(0.5,-200,0.5,-125)
 keyFrame.BackgroundColor3=Color3.fromRGB(30,30,30)
 keyFrame.BorderSizePixel=0
-
-unlockMouse()
 
 local keyCorner=Instance.new("UICorner",keyFrame)
 keyCorner.CornerRadius=UDim.new(0,15)
@@ -234,8 +227,6 @@ verifyBtn.MouseButton1Click:Connect(function()
         statusText.TextColor3=Color3.fromRGB(100,255,100)
         wait(1)
         keyFrame:Destroy()
-        
-        unlockMouse()
         
         local loadingFrame=Instance.new("Frame",sg)
         loadingFrame.Size=UDim2.new(1,0,1,0)
@@ -740,7 +731,6 @@ verifyBtn.MouseButton1Click:Connect(function()
                     f.Visible=false
                     f.Size=UDim2.new(0,600,0,400)
                     toggleBtn.Visible=true
-                    lockMouse()
                 end)
                 game:GetService("TweenService"):Create(stroke,TweenInfo.new(0.3),{Transparency=1}):Play()
             else
@@ -749,7 +739,6 @@ verifyBtn.MouseButton1Click:Connect(function()
                 f.Size=UDim2.new(0,0,0,0)
                 f:TweenSize(UDim2.new(0,600,0,400),Enum.EasingDirection.Out,Enum.EasingStyle.Back,0.4,true)
                 game:GetService("TweenService"):Create(stroke,TweenInfo.new(0.3),{Transparency=0.3}):Play()
-                unlockMouse()
             end
         end
 
