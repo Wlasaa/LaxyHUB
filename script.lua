@@ -32,6 +32,12 @@ end
 
 unlockMouse()
 
+spawn(function()
+    while wait(0.5) do
+        unlockMouse()
+    end
+end)
+
 local function getLanguage()
     local locale=game:GetService("LocalizationService").RobloxLocaleId
     if locale:sub(1,2)=="tr" then return "tr" end
